@@ -1,0 +1,69 @@
+.down {
+  top: 100%;
+  left: 3;
+}
+.up {
+  bottom: 100%;
+  left: 3;
+  transform: rotate(180deg);
+}
+
+.left {
+  left: -4;
+  transform: rotate(90deg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.right {
+  right: -4;
+  transform: rotate(90deg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.position {
+  position: relative;
+}
+.left_position {
+  right: 100%;
+  margin-right: 4px;
+  position: fixed;
+  width: 20rem;
+  top: 0;
+}
+
+.left_position_arrow {
+  left: 98.5%;
+  transform: rotate(-90deg);
+  top: 3;
+}
+.right_position {
+  left: 100%;
+  margin-left: 4px;
+  position: fixed;
+  width: 20rem;
+  top: 0;
+}
+
+.right_position_arrow {
+  right: 98%;
+  transform: rotate(-90deg);
+  top: 3;
+}
+
+.message {
+  box-shadow: 1px 1px 6px #fa1331;
+  border-radius: 12px;
+  color: var(--text-color);
+  margin-bottom: 4px;
+  background-color: #fa1331;
+  padding: 1rem;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: 14px solid #fa1331;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+}

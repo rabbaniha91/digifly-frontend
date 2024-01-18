@@ -1,0 +1,35 @@
+@media (max-width: 2000px) {
+  .responsive {
+    margin: 0 8rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .responsive {
+    margin: 0 4rem;
+  }
+  
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .responsive {
+    margin: 0 2rem;
+  }
+  
+}
+
+@media (min-width: 240px) and (max-width: 768px) {
+  .responsive {
+    margin: 0 1rem;
+  }
+}
+
+.image{
+  margin: 64px 0;
+}
+
+.image img{
+  width: 100%;
+}
+
+

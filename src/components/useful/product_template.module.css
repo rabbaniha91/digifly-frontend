@@ -1,0 +1,70 @@
+.container {
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--main-bg);
+  box-shadow: 0px 0px 6px #ccc;
+  width: 18rem;
+  height: 22rem;
+}
+
+.mobile {
+  width: 14rem;
+  height: 20rem;
+}
+
+.container .link {
+  color: var(--text-color);
+}
+
+.container .image {
+  width: 11.625rem;
+  height: 11.625rem;
+}
+
+.container .image_mobile {
+  width: 9rem;
+  height: 9rem;
+}
+
+.container .title {
+  text-align: center;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  line-height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: wrap;
+}
+
+.container .price_container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.container .price_container .discount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .price_container .discount .presentage {
+  color: var(--em-hover);
+}
+.container .price_container .discount_price {
+  font-size: var(--h6-desktop);
+}
+
+.mobile_price_container .discount .presentage,
+.mobile_price_container .discount .discount_price {
+  font-size: var(--small-mobile);
+}
+.container .price_container .offer_price {
+  color: var(--title-color);
+  text-decoration: line-through;
+}
+
+.container:hover .title {
+  color: var(--second-bg);
+}

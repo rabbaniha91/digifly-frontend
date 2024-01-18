@@ -1,0 +1,79 @@
+.container {
+  margin: 64px 0;
+}
+.container swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.container swiper-slide {
+  text-align: center;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.container swiper-container::part(button-prev),
+.container swiper-container::part(button-next) {
+  color: var(--btn-color);
+  width: 28px;
+  height: 28px;
+  background-color: #999;
+  padding: 7px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s;
+}
+
+.container swiper-container::part(button-prev):hover,
+.container swiper-container::part(button-next):hover {
+  background-color: #999a;
+  color: var(--btn-hover);
+}
+
+.container .image {
+  border-radius: 50%;
+  border: 2px solid var(--em-color);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.container .desktop {
+  width: 112px;
+  height: 112px;
+}
+
+.container .mobile{
+  width: 94px;
+  height: 94px;
+}
+
+.container .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 50%;
+}
+
+.container .image:hover {
+  transform: scale(1.05);
+  border-color: var(--em-hover);
+}
+
+.container .link {
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
