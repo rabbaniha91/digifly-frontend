@@ -9,7 +9,7 @@ import { IoMdClose } from "react-icons/io";
 
 import styles from "./styles.module.css"
 import classes from "../../../../assets/styles/responsive.module.css"
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import CustomTooltip from '../../../utilities/Tooltip';
 import useScreenSize from '../../../../hooks/useScreenSize';
 import TemporaryDrawer from '../Category';
@@ -76,7 +76,7 @@ const Navbar = () => {
   return (
     <>
       {showCloseIcon && (
-        <IoMdClose size={32} className={styles.close_icon} onClick={() => setOpenMenu(false)} />
+        <IoMdClose size={38} className={styles.close_icon} onClick={() => setOpenMenu(false)} />
       )}
       <TemporaryDrawer open={openMenu} />
       <nav className={`${styles.container} ${classes.responsive}`}>
@@ -90,7 +90,7 @@ const Navbar = () => {
             </div>
             <div ref={userRef}>
               <CustomTooltip title={"ورود / ثبت نام"}>
-                <Link to={"/login"} className={styles.link}><TbUser size={38} className={`${styles.icon} ${styles.hover_icon}`} /></Link>
+                <Link to={"/login"} state={useLocation().pathname} className={styles.link}><TbUser size={38} className={`${styles.icon} ${styles.hover_icon}`} /></Link>
               </CustomTooltip>
             </div>
           </div>

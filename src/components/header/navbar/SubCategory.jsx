@@ -7,17 +7,17 @@ import styles from "./desktop/styles.module.css"
 const theme = createTheme({
     direction: 'rtl',
     typography: {
-        fontFamily: ["vazir_regular", "sans serif"].join(","),
+        fontFamily: ["shabnam", "sans serif"].join(","),
         fontSize: 13
     },
 
 });
 
 const subCategories = {
-    1: ["گیمینگ", "مهندسی", "رندرینگ", "مالتی مدیا"],
-    2: ["گیمینگ", "مهندسی"],
-    3: ["اپل", "سامسونگ", "شیائومی", "هواوی"],
-    4: ["PS5", "XBOX"]
+    1: ["ایسوس", "لنوو", "ایسر", "اپل", "سامسونگ", "توشیبا", "ام اس آی"],
+    2: ["گیمینگ", "مهندسی", "کیس اسمبل شده", "کیبورد", "موس", "مانیتور"],
+    3: ["اپل", "سامسونگ", "شیائومی", "هواوی", "ال جی", "نوکیا", "موتورولا", "ورتو", "هدفون", "شارژر", "کاور"],
+    4: ["PS5", "XBOX", "PS4"]
 }
 
 const SubCategory = ({ index, to }) => {

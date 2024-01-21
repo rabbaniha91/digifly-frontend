@@ -12,7 +12,7 @@ const CustomTooltip = ({ title, children }) => {
       color: "var(--text-color)",
       boxShadow: theme.shadows[1],
       fontSize: "0.889rem",
-      fontFamily: "vazir_medium",
+      fontFamily: "shabnam",
     },
     [`& .${tooltipClasses.arrow}`]: {
       color: "var(--title-color)",

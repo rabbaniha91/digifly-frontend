@@ -36,7 +36,7 @@
   border-radius: 48px;
   padding-right: 3.3rem;
   font-size: var(--normal-desktop);
-  font-family: vazir_regular;
+  font-family: var(--main-font);
   transition: all 0.3s linear;
   background-color: var(--title-color);
 }
@@ -114,19 +114,23 @@
 .close_icon{
   position: fixed;
   top: 0;
-  right: 310px;
+  right: 360px;
   z-index: 9999;
   cursor: pointer;
   margin-top: 2px;
   transition: all 0.3s ease;
+  padding: 2px;
+  background-color: #fff3;
+  border-radius: 50%;
 }
 
 .close_icon:hover{
-  color: #f80101;
+  color: #fff6;
+  background-color: #f8010166;
 }
 
 .menu{
-  font-family: vazir_regular;
+  font-family: var(--main-font);
 }
 
 .hidden {

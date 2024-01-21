@@ -23,16 +23,16 @@ export default function TextInput({ label, helperText, error, onChange, onBlur, 
                 <div dir={dir}>
                     <TextField
                         type={!type ? "text" : type}
-                        FormHelperTextProps={{ style: { fontFamily: "vazir_regular", fontSize: "var(--small-desktop)" } }}
+                        FormHelperTextProps={{ style: { fontFamily: "shabnam", fontSize: "var(--small-desktop)" } }}
                         inputProps={{ 
                             style: 
                             { 
-                                fontFamily: "vazir_regular, Open Sans", 
+                                fontFamily: "shabnam, Open Sans", 
                                 fontSize: "var(--normal-desktop)",
                                 paddingLeft: type === "password" || type === "text" ? "10%" : "3%"
                             } 
                         }}
-                        InputLabelProps={{ style: { fontFamily: "vazir_regular", fontSize: "var(--normal-desktop)" } }}
+                        InputLabelProps={{ style: { fontFamily: "shabnam", fontSize: "var(--normal-desktop)" } }}
                         fullWidth={fullWidth}
                         name={name}
                         id="outlined-error-helper-text"
