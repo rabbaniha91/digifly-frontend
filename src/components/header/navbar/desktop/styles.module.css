@@ -75,6 +75,12 @@
   color: var(--text-color);
 }
 
+
+
+.hover_item:hover{
+  color: var(--em-color);
+}
+
 .container .bottom {
   display: flex;
   align-items: center;
@@ -92,15 +98,35 @@
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
-  color: var(--text-color);
 }
 
 .container .bottom .navbar_itmes_menu .navbar_itmes_menu_icon {
   transition: all 0.3s ease-in-out;
 }
+.navbar_itmes_menu_icon{
+  color: var(--text-color);
+}
 
-.hover_icon:hover {
+.navbar_itmes_menu_icon:hover{
   color: var(--logo-color);
+}
+
+.close_icon{
+  position: fixed;
+  top: 0;
+  right: 310px;
+  z-index: 9999;
+  cursor: pointer;
+  margin-top: 2px;
+  transition: all 0.3s ease;
+}
+
+.close_icon:hover{
+  color: #f80101;
+}
+
+.menu{
+  font-family: vazir_regular;
 }
 
 .hidden {
@@ -142,7 +168,7 @@
   }
   100% {
     top: 150px;
-    right: 1px;
+    right: 4px;
   }
 }
 @keyframes move3 {

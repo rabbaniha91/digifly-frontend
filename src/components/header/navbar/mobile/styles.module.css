@@ -28,15 +28,14 @@
 .link {
   text-decoration: none;
   transition: all 0.3s ease-in;
-  color: var(--text-color);
 }
 
 
-/* .top .navbar_itmes_menu,
+.top .navbar_itmes_menu,
 .bottom .navbar_itmes_menu,
 .icon {
-  color: var(--title-color);
-} */
+  color: #fff;
+}
 
 .icon {
   cursor: pointer;

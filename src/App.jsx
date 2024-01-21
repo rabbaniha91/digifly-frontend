@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import './App.css'
 import Login from './pages/Login';
 
+
 register();
 
 function App() {

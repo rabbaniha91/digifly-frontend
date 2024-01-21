@@ -3,9 +3,13 @@ import styles from "./styles.module.css"
 import CustomTooltip from '../../../utilities/Tooltip'
 import { Link } from 'react-router-dom'
 import { TbCategory, TbDiscountCheck, TbHome2, TbSearch, TbShoppingBag, TbUser } from 'react-icons/tb'
+import TemporaryDrawer from '../Category'
 
 const MobileNav = () => {
+  const [openMenu, setOpenMenu] = React.useState(false);
   const topNav = useRef(null)
+
+  
 
   useEffect(() => {
     const checkScroll = () => {
@@ -25,6 +29,8 @@ const MobileNav = () => {
   }, [document.documentElement.scrollTop])
   return (
     <div>
+      
+      <TemporaryDrawer open={openMenu}/>
       <div ref={topNav} className={styles.top}>
         <div className={styles.right}>
           <CustomTooltip title={"خرید اقساطی"}>
@@ -48,7 +54,7 @@ const MobileNav = () => {
           </Link>
         </CustomTooltip>
         <CustomTooltip title={"دسته بندی کالاها"}>
-          <div style={{ cursor: "pointer" }} className={` ${styles.navbar_itmes_menu}`}>
+          <div onClick={() => setOpenMenu(prev => !prev)} style={{ cursor: "pointer" }} className={` ${styles.navbar_itmes_menu}`}>
             <TbCategory size={32} className={`${styles.navbar_itmes_menu_icon} ${styles.hover_icon}`} />
 
           </div>
