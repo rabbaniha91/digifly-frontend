@@ -64,7 +64,7 @@ const TemporaryDrawer = React.memo(({ open }) => {
           <List sx={{ marginTop: "1rem", paddingBottom: "5rem" }}>
             <MainCategory handler={openSubCategoty} text={"لپ تاپ"} active={openSub} index={0} />
             <Collapse in={openSub[0]} timeout="auto" unmountOnExit>
-              <SubCategory index={i + 1} to={"laptop"} />
+              <SubCategory index={i + 1} to={"lapstop"} />
             </Collapse>
             <Divider />
             <MainCategory handler={openSubCategoty} text={"کامپیوتر"} active={openSub} index={1} />

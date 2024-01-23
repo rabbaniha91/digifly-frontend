@@ -24,7 +24,7 @@ const SubCategory = ({ index, to }) => {
     return (
         <ThemeProvider theme={theme}>
             <List component="div" disablePadding>
-                <Link to={`product/${to}`} className={`${styles.link} ${styles.hover_item}`}>
+                <Link to={`products/${to}`} className={`${styles.link} ${styles.hover_item}`}>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemText primary="مشاهده تمام محصولات این دسته" />
@@ -32,7 +32,7 @@ const SubCategory = ({ index, to }) => {
                     </ListItem>
                 </Link>
                 {subCategories[`${index}`].map((item, i) => (
-                    <Link key={item} to={`product/${to}/${item}`} className={`${styles.link} ${styles.hover_item}`}>
+                    <Link key={item} to={`products/${to}/${item}`} className={`${styles.link} ${styles.hover_item}`}>
                         <ListItem key={item} disablePadding={false}>
                             <ListItemButton >
                                 <ListItemText primary={item} />

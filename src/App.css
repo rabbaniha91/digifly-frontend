@@ -76,3 +76,18 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #787878;
 }
+
+.back_btn {
+  position: absolute;
+  left: 3rem;
+  top: 1.5rem;
+  color: #000;
+}
+
+.back_btn:hover{
+  color: var(--em-hover);
+}
+
+.back_btn:active{
+  color: var(--btn-hover);
+}

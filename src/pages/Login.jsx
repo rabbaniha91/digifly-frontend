@@ -4,7 +4,7 @@ import PhoneLoginComponent from "../components/login-register/PhoneLoginCompoent
 import RegisterFrom from "../components/login-register/RegisterForm"
 import classes from "../assets/styles/responsive.module.css"
 import { Link, useLocation } from 'react-router-dom'
-import { IoArrowUndoCircleSharp } from "react-icons/io5";
+import "../App.css"
 
 const Login = () => {
     const [loginWithPhone, setLoginWithPhone] = useState(true)
@@ -15,8 +15,8 @@ const Login = () => {
 
     return (
         <div className={classes.responsive}>
-            <Link to={location.state}>
-                <IoArrowUndoCircleSharp size={42}/>
+            <Link to={location.state} className="back_btn">
+                <span>بازگشت</span>
             </Link>
             {!register && loginWithPhone
                 ? (<PhoneLoginComponent setLoginWithPhone={setLoginWithPhone} setRegister={setRegister} />)
