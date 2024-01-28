@@ -1,31 +1,30 @@
-import axios from "../../axios/axios";
-import { GET_PRODUCTS_REQUEST, GET_PRODUCTS_FAIL, GET_PRODUCTS_SUCCESS } from "./types";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from '../../axios/axios';
 
+const controller = new AbortController()
+const { signal } = controller;
 
-const getPRoducts = (product, pageNum, pageLimit) => async (dispatch) => {
-    try {
-        dispatch({ type: GET_PRODUCTS_REQUEST })
-        const controller = new AbortController()
-        const { signal } = controller;
-        const { data } = await axios.get(`
-        /products/getProducts/${product}?pageNum=${pageNum}&pageLimit=${pageLimit}
-        `, { signal })
+const getProducts = createAsyncThunk(
+    'products/getProducts',
+    async ({ mainCategory, pageNum, pageLimit }) => {
+        try {
+            const { data } = await axios.get(
+                `/products/getProducts/${mainCategory}?pageNum=${pageNum}&pageLimit=${pageLimit}`,
+                { signal }
+            );
+            return data;
+        } catch (error) {
+            let errorMessage = ""
+            if (!error?.response) {
+                errorMessage = 'پاسخی از سرور دریافت نشد!';
+            } else {
+                errorMessage = error?.response?.data?.message || error?.message
+            }
 
-        dispatch({type: GET_PRODUCTS_SUCCESS, payload: {
-            info: data.docs,
-            hasNextPage: data.hasNextPage,
-            nextPage: data.nextPage,
-            totalPage: data.totalPage
-        }})
-    } catch (error) {
-        if (signal.aborted) return
-        let errorMessage = "";
-        if (!error?.response) {
-            errorMessage = "پاسخی از سرور دریافت نشد!"
-        } else {
-            errorMessage = error?.response?.data?.message
+            throw errorMessage;
         }
-
-        dispatch({ type: GET_PRODUCTS_FAIL, payload: { errorMessage } })
     }
-}
+);
+
+
+export default getProducts;

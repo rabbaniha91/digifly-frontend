@@ -1,16 +1,44 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { getProducts } from '../../utilities/utilities'
+import { useDispatch, useSelector } from "react-redux"
+import getProducts from '../../redux/actions/productsAction'
+import ProductTemplate from '../useful/ProductTemplate'
 
 const Products = React.memo(({ mainCategory, subCategory }) => {
+    const productsState = useSelector((state) => state?.products)
+    const dispatch = useDispatch()
+
     const [pageNum, setPageNum] = useState(1)
     const [pageLimit, setPageLimit] = useState(9)
+    const [products, setproducts] = useState([])
+
     useEffect(() => {
         if (subCategory === "") {
-            getProducts(mainCategory, pageNum, pageLimit)
+            dispatch(getProducts({ mainCategory, pageNum, pageLimit }))
+        }
+        if (productsState?.info?.length > 0) {
+            setproducts(productsState?.info)
         }
     }, [mainCategory, subCategory, pageNum, pageLimit])
+
+
+
+
+
     return (
-        <div>Products</div>
+        <>
+            {products?.length > 0 && products?.map((product, index) => (
+                <div key={product?._id}>
+                    <ProductTemplate
+                        title={product?.title}
+                        id={product?._id}
+                        offer={product?.offer}
+                        price={product?.price}
+                        cover={product?.cover}
+                        timer={product?.timeOfOffer}
+                    />
+                </div>
+            ))}
+        </>
     )
 })
 

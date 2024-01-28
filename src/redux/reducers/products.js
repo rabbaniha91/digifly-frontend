@@ -1,46 +1,42 @@
-import {
-    GET_PRODUCTS_FAIL, GET_PRODUCTS_REQUEST, GET_PRODUCTS_SUCCESS
-} from "../actions/types"
+import { createSlice } from "@reduxjs/toolkit";
+import getProducts from "../actions/productsAction";
 
 const initialState = {
     isLoading: false,
     info: "",
     hasNextPage: "",
     nextPage: "",
-    totalPage: "",
+    totalPages: "",
     errorMessage: ""
 
 }
 
-const productsReducer = (state = initialState, action) => {
-    const { type, payload } = action
+const productsSlice = createSlice({
+    name: 'products',
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(getProducts.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getProducts.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.info = action.payload.docs;
+                state.hasNextPage = action.payload.hasNextPage;
+                state.nextPage = action.payload.nextPage;
+                state.totalPages = action.payload.totalPages;
+                state.errorMessage = ""
+            })
+            .addCase(getProducts.rejected, (state, action) => {
+                state.isLoading = false;
 
-    switch (type) {
-        case GET_PRODUCTS_REQUEST:
-            return {
-                isLoading: true,
-                errorMessage: "",
-                ...state
-            }
-        case GET_PRODUCTS_SUCCESS:
-            return {
-                isLoading: false,
-                info: [...state.info, payload.products],
-                hasNextPage: payload.hasNextPage,
-                nextPage: payload.nextPage,
-                totalPage: payload.totalPage,
-                errorMessage: ""
-            }
-        case GET_PRODUCTS_FAIL:
-            return {
-                ...state,
-                errorMessage: payload.errorMessage,
-                isLoading: false
-            }
-        default:
-            return initialState
+                state.errorMessage = action?.error?.message;
+
+            });
     }
-}
+});
+
+export default productsSlice.reducer;
 
 
-export default productsReducer
