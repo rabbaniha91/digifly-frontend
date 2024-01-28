@@ -4,11 +4,11 @@ import ProductTemplate from "../../useful/ProductTemplate"
 import styles from "./styles.module.css"
 
 const FlagShipSection = () => {
-    const { isSM, isMaxMD } = useScreenSize()
+    const { isSM, isMaxMD, isLG } = useScreenSize()
     return (
         <div className={styles.container}>
             <p className={`${styles.caption} ${isSM && styles.caption_mobile}`}>موبایل های پرطرفدار</p>
-            <swiper-container className="mySwiper" navigation="true" slides-per-view={isSM ? "1" : isMaxMD ? "3" : "4"}
+            <swiper-container className="mySwiper" navigation="true" slides-per-view={isSM ? "1" : isLG ? "3" : "4"}
                 space-between={isSM ? "20" : "40"} >
                 <swiper-slide>
                     <ProductTemplate title={`گوشی سامسونگ s23 اولترا 256گیگ حافظه و 12گیگ RAM 108 مگاپیکسل دوربین عقبی 44 مگاپیکسل دوربین سلفی`} price={"100000000"} offer={0} id={`ksdksk`} cover={"anh-nhat-yqcloMb3Abw-unsplash_prev_ui.png"} />

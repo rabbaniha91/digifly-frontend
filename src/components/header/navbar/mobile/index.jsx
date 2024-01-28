@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styles from "./styles.module.css"
-import CustomTooltip from '../../../utilities/Tooltip'
+import CustomTooltip from '../../../useful/Tooltip'
 import { Link } from 'react-router-dom'
 import { TbCategory, TbDiscountCheck, TbHome2, TbSearch, TbShoppingBag, TbUser } from 'react-icons/tb'
 import TemporaryDrawer from '../Category'

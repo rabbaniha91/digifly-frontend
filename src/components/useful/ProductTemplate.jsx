@@ -4,8 +4,8 @@ import styles from "./product_template.module.css"
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Link } from 'react-router-dom';
 import useScreenSize from '../../hooks/useScreenSize';
-import { toPersianDigits } from '../utilities/utilities';
-import Timer from './TImer';
+import { toPersianDigits } from '../../utilities/utilities';
+import Timer from './Timer';
 
 const ProductTemplate = ({ offer, title, cover, price, id, timer }) => {
     const { isSM } = useScreenSize()

@@ -10,7 +10,7 @@ import { IoMdClose } from "react-icons/io";
 import styles from "./styles.module.css"
 import classes from "../../../../assets/styles/responsive.module.css"
 import { Link, useLocation } from 'react-router-dom';
-import CustomTooltip from '../../../utilities/Tooltip';
+import CustomTooltip from '../../../useful/Tooltip';
 import useScreenSize from '../../../../hooks/useScreenSize';
 import TemporaryDrawer from '../Category';
 
