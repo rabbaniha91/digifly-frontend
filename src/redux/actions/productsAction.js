@@ -1,12 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../axios/axios';
 
-const controller = new AbortController()
-const { signal } = controller;
+
 
 const getProducts = createAsyncThunk(
     'products/getProducts',
-    async ({ mainCategory, pageNum, pageLimit }) => {
+    async ({ mainCategory, pageNum, pageLimit , signal}) => {
         try {
             const { data } = await axios.get(
                 `/products/getProducts/${mainCategory}?pageNum=${pageNum}&pageLimit=${pageLimit}`,

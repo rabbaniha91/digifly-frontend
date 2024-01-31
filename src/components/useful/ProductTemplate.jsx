@@ -7,18 +7,18 @@ import useScreenSize from '../../hooks/useScreenSize';
 import { toPersianDigits } from '../../utilities/utilities';
 import Timer from './Timer';
 
-const ProductTemplate = ({ offer, title, cover, price, id, timer }) => {
+const ProductTemplate = React.forwardRef(({ offer, title, cover, price, id, timer }, ref) => {
     const { isSM } = useScreenSize()
     const [intPrice, setIntPrice] = useState("")
     const [discount, setDiscount] = useState("")
 
 
     useEffect(() => {
-        setIntPrice(price.split(",").join(""))
+        setIntPrice(price)
         setDiscount((100 - offer) / 100)
     }, [])
     return (
-        <div className={styles.super}>
+        <div ref={ref} className={styles.super}>
             {timer && (
                 <div className={styles.timer}>
                     <Timer time={timer} />
@@ -29,12 +29,14 @@ const ProductTemplate = ({ offer, title, cover, price, id, timer }) => {
             >
                 <Link to={`/product/${id}/${title}`} className={styles.link}>
 
-                    <LazyLoadImage
-                        src={`/images/removedbg/${cover}`}
-                        effect="blur"
-                        alt=""
-                        className={`${styles.image} ${styles.image_mobile}`}
-                    />
+                    <div className={styles.image_container}>
+                        <LazyLoadImage
+                            src={`${cover}`}
+                            effect="blur"
+                            alt=""
+                            className={`${styles.image} ${styles.image_mobile}`}
+                        />
+                    </div>
 
                     <p className={styles.title}>{title}</p>
 
@@ -69,6 +71,6 @@ const ProductTemplate = ({ offer, title, cover, price, id, timer }) => {
             </div>
         </div>
     )
-}
+})
 
 export default ProductTemplate

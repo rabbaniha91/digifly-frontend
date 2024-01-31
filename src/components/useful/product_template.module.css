@@ -14,7 +14,7 @@
   padding: 1rem;
   border-radius: 2px;
   background: var(--main-bg);
-  box-shadow: 1px 1px 2px #eee8, -1px -1px 2px #eee8;
+  box-shadow: 1px 1px 2px #eee, -1px -1px 2px #eee;
   width: 16rem;
   min-height: 22rem;
 }
@@ -26,6 +26,12 @@
 
 .container .link {
   color: var(--text-color);
+}
+
+.container .image_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container .image {
