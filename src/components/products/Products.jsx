@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { Grid } from "react-loader-spinner"
+import { ColorRing } from "react-loader-spinner"
 import getProducts from '../../redux/actions/productsAction'
 import ProductTemplate from '../useful/ProductTemplate'
 import classes from "../../assets/styles/responsive.module.css"
@@ -15,6 +15,7 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
     const [pageNum, setPageNum] = useState(1)
     const [pageLimit, setPageLimit] = useState(14)
     const [isFetching, setIsFetching] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
     const latestPageNum = useRef(pageNum);
     latestPageNum.current = pageNum;
@@ -25,8 +26,21 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
         setIsFetching(true);
         controller.current.abort();
         controller.current = new AbortController();
-        dispatch(getProducts({ mainCategory, pageNum: latestPageNum.current, pageLimit, signal: controller.current.signal }));
+        try {
+            if (subCategory === "") {
+                dispatch(getProducts({ mainCategory, pageNum: latestPageNum.current, pageLimit, signal: controller.current.signal }));
+            }
+        } catch (error) {
+            //    
+        }
+
     }
+
+    useEffect(() => {
+        setErrorMessage(productsState?.errorMessage)
+    }, [productsState?.errorMessage])
+
+
 
 
 
@@ -35,10 +49,6 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
             setReciveAll(true)
         }
     }, [productsState?.hasNextPage])
-
-    useEffect(() => {
-        console.log(reciveAll)
-    }, [reciveAll])
 
     useEffect(() => {
         return () => {
@@ -81,18 +91,19 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
 
 
     return (
-        <div className={`${classes.responsive} ${productsState?.isLoading ? styles.loader : styles.container}`}>
+        <div className={`${styles.container} ${classes.responsive}`}>
             {productsState.isLoading && (
-                <Grid
-                    visible={true}
-                    height="80"
-                    width="80"
-                    color="var(--second-main-bg)"
-                    ariaLabel="grid-loading"
-                    radius="12.5"
-                    wrapperStyle={{}}
-                    wrapperClass="grid-wrapper"
-                />
+                <div className={styles.loader}>
+                    <ColorRing
+                        visible={productsState?.isLoading}
+                        height="80"
+                        width="80"
+                        ariaLabel="color-ring-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="color-ring-wrapper"
+                        colors={['#1d9af2', '#1d9af255', '#1d9af288', '#1d9af2aa', '#1d9af2ee']}
+                    />
+                </div>
             )}
 
             {productsState?.info?.length > 0 && productsState?.info?.map((product, index) => {

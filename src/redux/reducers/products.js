@@ -3,7 +3,7 @@ import getProducts from "../actions/productsAction";
 import { RESET_ACTION } from "../slices";
 
 const initialState = {
-    isLoading: false,
+    isLoading: true,
     info: [],
     hasNextPage: "",
     nextPage: "",

@@ -27,3 +27,4 @@ const getProducts = createAsyncThunk(
 
 
 export default getProducts;
+
