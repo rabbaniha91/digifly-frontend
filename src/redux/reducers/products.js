@@ -25,7 +25,7 @@ const productsSlice = createSlice({
             })
             .addCase(getProducts.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.info = [...state.info, ...action.payload.docs]
+                state.info.push(...action.payload.docs)
                 state.hasNextPage = action.payload.hasNextPage;
                 state.nextPage = action.payload.nextPage;
                 state.totalPages = action.payload.totalPages;

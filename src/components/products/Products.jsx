@@ -10,11 +10,11 @@ import { RESET_ACTION } from '../../redux/slices'
 const Products = React.memo(({ mainCategory, subCategory }) => {
     const productsState = useSelector((state) => state?.products)
     const dispatch = useDispatch()
-    const [products, setPrpducts] = useState([])
+    const [reciveAll, setReciveAll] = useState(false)
 
     const [pageNum, setPageNum] = useState(1)
     const [pageLimit, setPageLimit] = useState(14)
-    const [isFetching, setIsFetching] = useState(false) 
+    const [isFetching, setIsFetching] = useState(false)
 
     const latestPageNum = useRef(pageNum);
     latestPageNum.current = pageNum;
@@ -23,19 +23,22 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
 
     const fetchData = async () => {
         setIsFetching(true);
-        controller.current.abort(); 
-        controller.current = new AbortController(); 
+        controller.current.abort();
+        controller.current = new AbortController();
         dispatch(getProducts({ mainCategory, pageNum: latestPageNum.current, pageLimit, signal: controller.current.signal }));
     }
 
 
 
     useEffect(() => {
-        if (productsState?.info?.length > 0) {
-            setPrpducts(productsState?.info)
+        if (!productsState?.hasNextPage && productsState?.info?.length > 0) {
+            setReciveAll(true)
         }
+    }, [productsState?.hasNextPage])
 
-    }, [productsState?.info])
+    useEffect(() => {
+        console.log(reciveAll)
+    }, [reciveAll])
 
     useEffect(() => {
         return () => {
@@ -44,7 +47,7 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
     }, [])
 
     useEffect(() => {
-        if (productsState?.nextPage && !isFetching) { 
+        if (productsState?.nextPage && !isFetching) {
             setPageNum(productsState?.nextPage)
         }
     }, [productsState?.nextPage, isFetching])
@@ -56,7 +59,9 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
         const observer = new IntersectionObserver(
             entries => {
                 if (entries[0].isIntersecting) {
-                    fetchData();
+                    if (!reciveAll) {
+                        fetchData();
+                    }
                 }
             },
             { threshold: 1 }
@@ -70,46 +75,43 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
             if (observerTarget.current) {
                 observer.unobserve(observerTarget.current);
             }
-            setIsFetching(false) 
+            setIsFetching(false)
         };
-    }, [observerTarget, fetchData]);
+    }, [observerTarget, fetchData, productsState?.hasNextPage]);
 
 
     return (
-        <>
-            {productsState.isLoading ? (
-                <div className={styles.loader}>
-                    <Grid
-                        visible={true}
-                        height="80"
-                        width="80"
-                        color="var(--second-main-bg)"
-                        ariaLabel="grid-loading"
-                        radius="12.5"
-                        wrapperStyle={{}}
-                        wrapperClass="grid-wrapper"
-                    />
-
-                </div>
-            ) : (
-                <div className={`${classes.responsive} ${styles.container}`}>
-                    {products?.length > 0 && products?.map((product, index) => {
-                        return <ProductTemplate
-                            title={product?.title}
-                            id={product?._id}
-                            offer={product?.offer}
-                            price={product?.price}
-                            cover={product?.cover}
-                            timer={product?.timeOfOffer}
-                            key={index}
-                        />
-                    })}
-
-                    <div ref={observerTarget}></div>
-
-                </div>
+        <div className={`${classes.responsive} ${productsState?.isLoading ? styles.loader : styles.container}`}>
+            {productsState.isLoading && (
+                <Grid
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="var(--second-main-bg)"
+                    ariaLabel="grid-loading"
+                    radius="12.5"
+                    wrapperStyle={{}}
+                    wrapperClass="grid-wrapper"
+                />
             )}
-        </>
+
+            {productsState?.info?.length > 0 && productsState?.info?.map((product, index) => {
+                return <ProductTemplate
+                    title={product?.title}
+                    id={product?._id}
+                    offer={product?.offer}
+                    price={product?.price}
+                    cover={product?.cover}
+                    timer={product?.timeOfOffer}
+                    key={index}
+                />
+            })}
+
+            <div ref={observerTarget}></div>
+
+
+
+        </div>
     )
 })
 
