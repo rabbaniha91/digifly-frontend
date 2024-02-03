@@ -100,10 +100,11 @@ const TemporaryDrawer = React.memo(({ open }) => {
         <Drawer
           anchor={"right"}
           open={open}
+
         >
           <div
             style={{
-              width: "100%", height: "7rem",
+              width: "100%", minHeight: "4rem",
               background: "var(--tertiary-btn)",
               display: "flex", alignItems: "center",
               justifyContent: "center"

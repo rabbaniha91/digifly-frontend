@@ -78,7 +78,9 @@ const Navbar = () => {
       {showCloseIcon && (
         <IoMdClose size={38} className={styles.close_icon} onClick={() => setOpenMenu(false)} />
       )}
+
       <TemporaryDrawer open={openMenu} />
+
       <nav className={`${styles.container} ${classes.responsive}`}>
 
         <div className={styles.top}>
