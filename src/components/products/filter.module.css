@@ -20,10 +20,13 @@
   position: absolute;
   height: auto;
   width: 16rem;
+  opacity: 0;
   border: 1px solid var(--second-bg);
   border-radius: 0.2rem;
   background-color: #fff;
   padding: 1rem 1rem;
+  margin-top: -4rem;
+  animation: upToDown 0.3s forwards ease-in;
 }
 .filter_titles {
   background-color: #eee;
@@ -52,12 +55,10 @@
 }
 
 .open {
-  animation: openMenu 0.7s forwards;
+  animation: openMenu 0.5s forwards ease-in-out;
 }
 
-.close{
-    animation: closeMenu 0.7s forwards;
-}
+
 
 .filter_brand_search_section {
   position: relative;
@@ -140,10 +141,11 @@
     opacity: 1;
   }
 }
-@keyframes closeMenu {
+
+@keyframes upToDown {
   0% {
-    margin-right: 16;
-    opacity: 1;
+    margin-top: -4rem;
+    opacity: 0;
   }
   25% {
     opacity: 0;
@@ -153,7 +155,7 @@
   }
 
   100% {
-    margin-right: 0rem;
-    opacity: 0;
+    margin-top: 0;
+    opacity: 1;
   }
 }
