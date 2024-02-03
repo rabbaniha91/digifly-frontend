@@ -54,7 +54,7 @@ const MobileNav = () => {
           </Link>
         </CustomTooltip>
         <CustomTooltip title={"دسته بندی کالاها"}>
-          <div onClick={() => setOpenMenu(prev => !prev)} style={{ cursor: "pointer" }} className={` ${styles.navbar_itmes_menu}`}>
+          <div onTouchEnd={() => setOpenMenu(prev => !prev)} style={{ cursor: "pointer" }} className={` ${styles.navbar_itmes_menu}`}>
             <TbCategory size={32} className={`${styles.navbar_itmes_menu_icon} ${styles.hover_icon}`} />
 
           </div>
