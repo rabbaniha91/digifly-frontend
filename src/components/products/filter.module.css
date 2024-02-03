@@ -1,0 +1,21 @@
+.filter_title {
+  width: max-content;
+  padding: 0.4rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0.2px 0.2px 6px 0px var(--second-bg);
+}
+
+.filter_title:hover :not(span) {
+  color: var(--second-bg);
+}
+
+.filter_Container {
+  z-index: 9999;
+  position: absolute;
+}
