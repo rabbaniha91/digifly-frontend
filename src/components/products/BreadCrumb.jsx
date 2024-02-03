@@ -11,8 +11,8 @@ const BreadCrumb = () => {
 
     return (
         <div className={`${classes.responsive} ${styles.container}`}>
-            <Link style={{opacity: "0.5"}} className={styles.link} to={"/"}>فروشگاه اینترنتی دیجی فلای</Link>
-            <span> / </span>
+            <Link style={{opacity: "0.8"}} className={styles.link} to={"/"}>فروشگاه اینترنتی دیجی فلای</Link>
+            <span > / </span>
             <Link className={styles.link} to={`/products/${main_category}`}> {persianCategory[main_category]}</Link>
             {sub_category && (
                 <>

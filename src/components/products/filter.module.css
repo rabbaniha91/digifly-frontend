@@ -18,4 +18,142 @@
 .filter_Container {
   z-index: 9999;
   position: absolute;
+  height: auto;
+  width: 16rem;
+  border: 1px solid var(--second-bg);
+  border-radius: 0.2rem;
+  background-color: #fff;
+  padding: 1rem 1rem;
+}
+.filter_titles {
+  background-color: #eee;
+  width: 100%;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: var(--h6-desktop);
+  cursor: pointer;
+}
+
+.filter_brand_container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  height: auto;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  width: 16rem;
+  position: absolute;
+  z-index: 9998;
+  margin-right: 0rem;
+  background-color: #eee;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  opacity: 0;
+}
+
+.open {
+  animation: openMenu 0.7s forwards;
+}
+
+.close{
+    animation: closeMenu 0.7s forwards;
+}
+
+.filter_brand_search_section {
+  position: relative;
+  color: var(--text-color);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.search_input {
+  background-color: #ccc;
+  border: none;
+  outline: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.3rem;
+  margin-top: 0.7rem;
+  width: 100%;
+}
+._input {
+  border: none;
+  outline: none;
+  padding: 0.2rem 0;
+}
+
+.active {
+  background-color: var(--second-bg);
+}
+
+.magnify {
+  position: absolute;
+  top: 50%;
+  left: 0.6rem;
+  transform: translateY(-30%);
+  cursor: pointer;
+}
+
+.brands_container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.3rem;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: 0.5rem;
+}
+.labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.labels div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filter_brand_titles {
+  letter-spacing: 0.01rem;
+  font-size: var(--small-desktop);
+}
+
+@keyframes openMenu {
+  0% {
+    margin-right: 0;
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    margin-right: 16rem;
+    opacity: 1;
+  }
+}
+@keyframes closeMenu {
+  0% {
+    margin-right: 16;
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    margin-right: 0rem;
+    opacity: 0;
+  }
 }
