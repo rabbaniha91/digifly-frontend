@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from "../filter.module.css"
 import FilterByBrand from './FilterByBrands'
+import useClickOutSide from "../../../hooks/useClickOutSide"
 
 const LaptopFilter = () => {
+  const filterRef = useRef(null)
   const [showFilterBrands, setShowFilterBrands] = useState(false)
+
+  useClickOutSide(filterRef, () => {
+    setShowFilterBrands(false)
+  })
+
   return (
     <>
       <div className={styles.filter_Container}>
@@ -12,8 +19,10 @@ const LaptopFilter = () => {
 
       </div>
       {showFilterBrands && (
+        <div ref={filterRef}>
+          <FilterByBrand open={showFilterBrands} />
 
-        <FilterByBrand open={showFilterBrands} />
+        </div>
       )}
     </>
   )
