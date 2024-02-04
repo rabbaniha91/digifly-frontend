@@ -13,6 +13,7 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
     const dispatch = useDispatch()
     const { isSM } = useScreenSize()
 
+    const [products, setProducts] = useState([])
     const [reciveAll, setReciveAll] = useState(false)
     const [pageNum, setPageNum] = useState(1)
     const [pageLimit, setPageLimit] = useState(14)
@@ -42,7 +43,9 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
         setErrorMessage(productsState?.errorMessage)
     }, [productsState?.errorMessage])
 
-
+    useEffect(() => {
+        setProducts([...productsState?.info])
+    }, [productsState?.info])
 
 
 
@@ -108,7 +111,7 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
                 </div>
             )}
 
-            {productsState?.info?.length > 0 && productsState?.info?.map((product, index) => {
+            {products?.length > 0 && products?.map((product, index) => {
                 return <ProductTemplate
                     title={product?.title}
                     id={product?._id}

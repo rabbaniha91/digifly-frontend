@@ -11,10 +11,7 @@ const FilterByBrand = ({ open }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [brands, setBrands] = useState("")
 
-    useEffect(() => {
-        console.log(brands)
-    }, [brands])
-
+   
     const filteredBrands = useMemo(() => {
         let isPersian = /^[\u0600-\u06FF\s]+$/;
         let isEnglish = /^[A-Za-z\s]+$/;
