@@ -6,12 +6,14 @@ import ProductTemplate from '../useful/ProductTemplate'
 import classes from "../../assets/styles/responsive.module.css"
 import styles from "./products.module.css"
 import { RESET_ACTION } from '../../redux/slices'
+import useScreenSize from '../../hooks/useScreenSize'
 
 const Products = React.memo(({ mainCategory, subCategory }) => {
     const productsState = useSelector((state) => state?.products)
     const dispatch = useDispatch()
-    const [reciveAll, setReciveAll] = useState(false)
+    const { isSM } = useScreenSize()
 
+    const [reciveAll, setReciveAll] = useState(false)
     const [pageNum, setPageNum] = useState(1)
     const [pageLimit, setPageLimit] = useState(14)
     const [isFetching, setIsFetching] = useState(false)
@@ -91,7 +93,7 @@ const Products = React.memo(({ mainCategory, subCategory }) => {
 
 
     return (
-        <div className={`${styles.container} ${classes.responsive}`}>
+        <div className={`${!isSM ? styles.container : styles.mobile_container} ${classes.responsive}`}>
             {productsState.isLoading && (
                 <div className={styles.loader}>
                     <ColorRing
